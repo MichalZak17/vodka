@@ -35,7 +35,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
 bot.on('guildMemberAdd', member => {
     function WelcomeFunction() {
         member.addRole(member.guild.roles.get("UnverifiedRoleID"));
-        member.guild.channels.get("WelcomeChannelID").send("Witaj" + member + " on the official server of the ** SERVER NAME **. Before using the server, please read our regulations,\n " + member.guild.channels.get("RegulationsChannelID") + " and then select ✅ or ❌.").then(async (suggestion) => { suggestion.react(`✅`).then(() => suggestion.react(`❌`)); }); } WelcomeFunction();
+        member.guild.channels.get("WelcomeChannelID").send("Welcome" + member + " to the official server of the ** SERVER NAME **. Before using the server, please read our regulations,\n " + member.guild.channels.get("RegulationsChannelID") + " and then select ✅ or ❌.").then(async (suggestion) => { suggestion.react(`✅`).then(() => suggestion.react(`❌`)); }); } WelcomeFunction();
 });
 
 bot.on("message", async message => {
