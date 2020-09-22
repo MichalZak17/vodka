@@ -3,6 +3,7 @@
 ## About Bot
 The internet is full of discord bots. Ready or documentation to do them. But I decided to create a repository containing a fully developed bot with many additional features.
 
+
 ## Installation
 
 First you should install **Node.js** via this link below
@@ -29,4 +30,9 @@ Create .bat file in which you will enter the `nodemon Index.js` .
 Clone this repo to your local machine using `$ git clone https://github.com/Malvare17/Discord-Bot.git`.
 
 Remember that you run the script at your own risk. Also remember that the program was created for educational purposes and the author is not obliged to do anything.
+ 
+
+
+
+
  
