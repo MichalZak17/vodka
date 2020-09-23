@@ -1,37 +1,89 @@
-# Discord-Bot
+# Discord Bot
 
-## About Bot
-The internet is full of discord bots. Ready or documentation to do them. But I decided to create a repository containing a fully developed bot with many additional features.
+## Shortcuts
 
-## Installation
+* [About](#About)
+* [Instalation](##Instalation)
+	* [Prerequisites](##Prerequisites)
+	* [Discord Developer Poratal](##Discord-Developer-Portal)
+	* [Configuration](##Configuration)
+	* [My suggestions](#My-suggestions)	
+* [License](##License)
+* [Contact](##Contact)
 
-First you should install **Node.js** via this link below
-	https://nodejs.org/dist/v12.18.1/node-v12.18.1-x64.msi
+## About
+The internet is full of discord bots. Ready for server or documentation to do them by yourself. I decided to create a repository containing a fully developed bot with many additional features. This repository may not be the most extensive, but when designing it, I meant simplicity and accessibility for everyone.
 
-Create a folder where your bot code will be located. "My Bot" - For example.
-	
- Next install **Discord.js** using PowerShell
+## Instalation
+Installation due to the number of things needed to be done will be divided into 3 parts:
+* [Prerequisites](##Prerequisites)
+* [Configuration](##Configuration)
+* [Discord Developer Poratal](##Discord-Developer-Portal)
 
-If you dont know how to do that, follow instructions bellow.
-1) Go to your folder where the bot will be located.
-2) Shift + Right Mouse Button and select "Open PowerShell window here".
-3) Write in PowerShell window `npm install discord.js`.
+To make it easier to understand the entire installation process, I will list it in sub-items.
 
-For the convenience of testing the bot, I recommend installing Nodemon.
-Write `npm install -g nodemon` in your PowerShell window.
+## Prerequisites
 
-## Start
+At first make sure you have **git clone** installed.
 
-If you want to launch your bot, be sure to enter your bot token in `Config-Bot.json`.
-Create .bat file in which you will enter the `nodemon Index.js` .
+1. Clone the repository:
+`$ git clone https://github.com/MichalZak17/Discord-Bot.git`
 
-## Clone
-Clone this repo to your local machine using `$ git clone https://github.com/Malvare17/Discord-Bot.git`.
+2.  Install **Node.js** by this [link](https://nodejs.org/dist/v12.18.1/node-v12.18.1-x64.msi).
 
-Remember that you run the script at your own risk. Also remember that the program was created for educational purposes and the author is not obliged to do anything.
- 
+## Discord Developer Poratal
 
+Before the last thing we will have to do is create our bot on the [Discord Developer Poratal](https://discord.com/developers) platform, to enter this site click on the hyperlink.
 
+To create bot on server:
+1. Click on **New Application**.
+2. Enter a name for your bot and click **Create**.
+3.  Go to **Bot**, click **Add Bot** and confirm.
 
+Congratulations you created your bot.
 
- 
+4.  Then you need to get your bot's key. Do it by clicking on the ** Click to Reveal Key ** and copy it. Next go to your `Config-Bot.json` file and paste this key to file. 
+5. Give your bot administrator rights.
+6. Go to **OAuth2**
+7. Click in "Scopes" on **bot** and copy this link.
+8. The last step will be to add the Bot to the server by opening the previously copied link.
+
+## Configuration
+
+Before starting to use the bot, the source code requires  to change some important elements.
+
+1.  To change your token and prefix go to the `Config-Bot.json` file located in the main directory of the project you downloaded. Open it and in place where it says `YourToken`, paste your bot token. If you need to replace `/` with another character, for example `!`.  Remember to save your file.
+
+2.  The second important thing to do is to create a special incident channel to which the bot will send all information to the teamt of its activities. Next copy his ID and paste it in every file located in `Discord-Bot/Commends`.
+
+3. Create a few roles like:
+* Administrator
+* Moderator
+* Owner
+
+We will need them to further configure the bot.
+
+Next enter the ID of the roles you have created in the designated places. For example, in place of `AdministratorRoleID`, paste the ID of the administrator role.
+
+!!! Remember to save all changes !!!
+
+4. I also added a server verification system. To configure it, you will need to create the Veryficated and Unveryficated roles and copy its ID and paste it in the appropriate places in the `Index.js` file
+
+If you did everything correctly, the only thing you have left is to run the bot by cmd.
+`$ node Index.js`
+
+If everything started correctly, your bot will be active on the server after a while and the console window will display "Server Bot: Online".
+
+## My suggestions
+
+To easily edit the bot without constantly closing it and starting it, I suggest installing a nodemon so that every time you try to save the bot, the bot will restart.
+
+You can do it by entering the command in the console
+`$ npm install -g nodemon`
+
+## Licence
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+E-mail: michal.zak04@outlook.com
+Project link: https://github.com/MichalZak17/ToDo
