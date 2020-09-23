@@ -86,4 +86,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 E-mail: michal.zak04@outlook.com
+
 Project link: https://github.com/MichalZak17/ToDo
