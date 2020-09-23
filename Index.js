@@ -18,6 +18,7 @@ bot.commands = new Discord.Collection();
     });
 }
 
+
 bot.on("ready", async () => {
     console.log("Server Bot: Online");
     bot.user.setActivity("Server ( ͡° ͜ʖ ͡°)", { type: 'WATCHING' });
