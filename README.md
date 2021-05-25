@@ -85,6 +85,6 @@ You can do it by entering the command in the console
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-E-mail: michal.zak04@outlook.com
+E-mail: michal.zak000@gmail.com
 
 Project link: https://github.com/MichalZak17/ToDo
