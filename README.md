@@ -7,7 +7,7 @@
 	* [Prerequisites](##Prerequisites)
 	* [Discord Developer Poratal](##Discord-Developer-Portal)
 	* [Configuration](##Configuration)
-	* [My suggestions](#My-suggestions)	
+	* [My suggestions](##My-suggestions)	
 * [License](##License)
 * [Contact](##Contact)
 
