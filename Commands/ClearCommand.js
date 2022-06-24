@@ -1,14 +1,24 @@
 const Discord = require("discord.js");
+const config = require("../config.json");
+const functions = require("../functions.js");
 
 module.exports.run = async (bot, message, args) => {
-  if (message.channel.id == "ArchivesChannelID" || message.channel.id == "SomeOtherChaannelID") { 
-      message.delete(); message.reply("You can not do it."); }
-        else { 
-            if (message.member.roles.has("AdministratorRoleID") || message.member.roles.has("ModeratorRoleID")) {
-                if (!args[0]) { message.member.createDM().then(channel => { channel.send("Invalid number of messages to delete."); }); }
-                else {  message.delete(); message.channel.bulkDelete(args[0]).then(() => { message.channel.send(`${args[0]} deleted messages.`).then(msg => msg.delete(2000)); }); } }
-            else { message.delete(); message.send("Nie mozesz tego zrobic."); } } 
+    if (!functions.hasRole(message.member, config.Roles.ADMINISTRATION)) { 
+        message.reply("You don't have permission to use this command!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) }); 
+        return; 
+    }
+
+    if (!args[0]) { message.reply("Please specify the number of messages to be deleted!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) }); return; }
+    if (args[0] > 99) { message.reply("Please specify a number less than 100!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) }); return; }
+
+    while (args[0] > 0) {
+        args[0]
+        try { 
+            message.channel.bulkDelete(args[0])
+        } catch { return; }
+    }
 }
+
 module.exports.help = {
     name: "ClearCommend",
     command: "clear",

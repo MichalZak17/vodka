@@ -1,88 +1,132 @@
-﻿const config = require("./Config-Bot.json");
-const Discord = require("discord.js");
-const fs = require("fs");
-const bot = new Discord.Client({ disableEveryone: true });
-bot.commands = new Discord.Collection();
+﻿const Discord = require('discord.js');
+const MySQL = require('mysql');
 
-{
-    fs.readdir("./Commends/", (err, files) => {
-        if (err) console.log(err);
-        let jsfile = files.filter(f => f.split(".").pop() === "js");
-        if (jsfile.length <= 0) { console.log(`[${time().add(2, "hours").format('LTS')}]` + "Couldn't find commands."); }
+const fs = require('fs');
+const functions = require('./functions.js');
 
-        jsfile.forEach((f, a) => {
-            let props = require(`./Commends/${f}`);
-            console.log(`${f} Loaded.`);
-            bot.commands.set(props.help.command, props);
-        });
-    });
+const fabric_config = {
+    "Settings": {
+        "Global": {
+            "token": "",
+            "prefix": "!",
+            "return_dms": true,
+            "return_bot": true
+        }
+    },
+
+    "Channels": {
+        "general": "984542381779091557",
+        "weather": "",
+        "music": "",
+        "welcome": "984542381779091557",
+
+        "logs": "",
+    },
+
+    "Roles": {
+        "ADMINISTRATION": {
+            "admin": "984548066675806278",
+            "moderator": "984547809070026832"
+        },
+
+        "welcome": "",
+        "muted": ""
+    },
+    
+    "Messages": {
+        "welcome": ["Hello, ${member}!", "Welcome to the server!"],
+    },
+
+    "Database": {
+        "Host": "127.0.0.1",
+        "User": "root",
+        "Password": "root",
+        "Port": "3306",
+        "Database": "mydb"
+    }
 }
 
+if (!fs.existsSync("./config.json")) { fs.writeFileSync("./config.json", JSON.stringify(fabric_config)); }
 
-bot.on("ready", async () => {
-    console.log("Server Bot: Online");
-    bot.user.setActivity("Server ( ͡° ͜ʖ ͡°)", { type: 'WATCHING' });
-});
+const config = require('./config.json');
 
-bot.on("messageReactionAdd", (reaction, user) => {
-    reaction.message.guild.members.forEach(member => {
-        if (user.id == member.user.id) {            
-            if (reaction.emoji.name === "✅") { member.removeRole("UnverifiedRoleID"); member.addRole("VeryficatedRoleID"); }
-            if (reaction.emoji.name === "❌") { member.kick();  } 
-        }
+const client = new Discord.Client({ intents: [
+    "GUILDS",
+    "GUILD_MEMBERS",
+    "GUILD_BANS",
+    "GUILD_EMOJIS_AND_STICKERS",
+    "GUILD_INTEGRATIONS",
+    "GUILD_WEBHOOKS",
+    "GUILD_INVITES",
+    "GUILD_VOICE_STATES",
+    "GUILD_PRESENCES",
+    "GUILD_MESSAGES",
+    "GUILD_MESSAGE_REACTIONS",
+    "GUILD_MESSAGE_TYPING",
+    "DIRECT_MESSAGES",
+    "DIRECT_MESSAGE_REACTIONS",
+    "DIRECT_MESSAGE_TYPING",
+    "GUILD_SCHEDULED_EVENTS"
+] });
+
+// -------------------------------------------------------------------------------------------------------------------
+
+client.commands = new Discord.Collection();
+
+fs.readdir("./Commands/", (err, files) => {
+    if (err) return console.error(err);
+    let jsFile = files.filter(f => f.split(".").pop() === "js");
+    if (jsFile.length <= 0) return console.log("[ERROR] No commands found!");
+
+    jsFile.forEach((f, i) => {
+        let props = require(`./Commands/${f}`);
+        console.log(`[INFO] Loaded ${f}!`);
+        client.commands.set(props.help.command, props);
     });
 });
 
-bot.on('guildMemberAdd', member => {
-    function WelcomeFunction() {
-        member.addRole(member.guild.roles.get("UnverifiedRoleID"));
-        member.guild.channels.get("WelcomeChannelID").send("Welcome" + member + " to the official server ** SERVER NAME **. Before using the server, please read our regulations,\n " + member.guild.channels.get("RegulationsChannelID") + " and then select ✅ or ❌.").then(async (suggestion) => { suggestion.react(`✅`).then(() => suggestion.react(`❌`)); }); } WelcomeFunction();
+// -------------------------------------------------------------------------------------------------------------------
+
+client.on("guildMemberAdd", (member) => {
+    if (!config.Channels.welcome) { return; }
+    if (!config.Messages.welcome) { return; }
+
+    let date = new Date();
+    
+    fs.appendFileSync("./logs/messages.log", `${date.toLocaleString()} | ${member.user.username} has joined the server\n`);
+
+    member.guild.channels.cache.get(config.Channels.welcome).send(functions.random(config.Messages.welcome));
+
+    if (config.Roles.welcome) { member.roles.add(config.Roles.welcome); }
 });
 
-bot.on("message", async message => {
-    if (message.author.bot) { return; }
-    if (message.channel.type == "dm") { return; }
+// -------------------------------------------------------------------------------------------------------------------
 
-    let messageArray = message.content.split(" ");
-    let args = messageArray.slice(1);
+if (!fs.existsSync("./logs")) { fs.mkdirSync("./logs"); }
+if (!fs.existsSync("./logs/messages.log")) { fs.writeFileSync("./logs/messages.log", ""); }
 
+// -------------------------------------------------------------------------------------------------------------------
 
-    //        let Embed = new Discord.RichEmbed()
-    //            .setDescription("Description")
-    //            .setColor("#32c000")
-    //            .addField("TEXT­­")
-    //            .addField("TEXT");
+client.on('messageCreate', message => {
+    if (config.Settings.Global.return_bots && message.author.bot) { return; }
+    if (config.Settings.Global.return_dms && message.channel.type === 'dm') { return; }
 
-    //        switch (message.content.toLowerCase()) {
-    //            case "commend":
-    //            case "/commend":
-    //            case "/commend":
-    //            case "commend": { message.delete(); message.channel.send(Embed); break; }
-    //            default: { break; }
-    //        }
-    //    }
-    //}
+    fs.appendFileSync("./logs/messages.log", `${message.createdAt.toLocaleString()} | ${message.author.tag} | ${message.content}\n`);
 
+    let messageArray = message.content.split(' ');
+    let arguments = messageArray.slice(1);    
 
+    let prefix = config.Settings.Global.prefix;
+    let command = messageArray[0].toLowerCase();
     
+    if (command.substring(0, prefix.length) != config.Settings.Global.prefix) { return; }
+    command = command.substring(prefix.length, messageArray[0].length).toLowerCase();
+
+    let commandFile = client.commands.get(command);
     
-    
-
-    let prefix = config.prefix;
-    let cmd = messageArray[0];
-    if (cmd.substring(0, prefix.length) != config.prefix) return;
-    cmd = cmd.substring(prefix.length, messageArray[0].length).toLowerCase();
-    let commandfile = bot.commands.get(cmd);
-    if (commandfile) commandfile.run(bot, message, args);       
-
-
-    switch (message.content.toLowerCase()) { case "commend": { message.member.guild.channels.get("ChannelID").send("Message"); break; } }
-                
-        switch (cmd) { case "commend": { message.member.guild.channels.get("ChannelID").send("Message");  break; }
-            default: { break; } }
-        
-
-
+    if (commandFile) { commandFile.run(client, message, arguments); }
 });
 
-bot.login(config.token);
+// -------------------------------------------------------------------------------------------------------------------
+
+client.login(config.Settings.Global.token);

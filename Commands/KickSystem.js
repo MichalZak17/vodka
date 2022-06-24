@@ -1,40 +1,33 @@
 const Discord = require("discord.js");
+const config = require("../config.json");
+const functions = require("../functions.js");
 
 module.exports.run = async (bot, message, args) => {
-    var a = message.id;
-    let errfind;
+    message.channel.messages.fetch(message.id).then(msg => { setTimeout(() => { msg.delete(); }, 5000) });
 
-    if (message.member.roles.has("AdministratorRoleID") || message.member.roles.has("ModeratorRoleID")) {
+    if (!functions.hasRole(message.member, config.Roles.ADMINISTRATION)) { 
+        message.reply("You don't have permission to use this command!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) }); 
+        return;
+    }
 
-        let KickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if (!KickUser) { message.channel.send("Unable to find this user."); }
-        let KickReason = args.join(" ").slice(22);
-        if (KickUser.roles.has("AdministratorRoleID") || KickUser.roles.has("ModeratorRoleID")) { message.channel.send("This person cannot be banned."); }
-        else {
-            let KickEmbed = new Discord.RichEmbed()
-                .setDescription("Kick")
-                .setColor("#ff0000")
-                .addField("Kicked user: ", `${KickUser}`)
-                .addField("Kicked by: ", `<@${message.author.id}> `)
-                .addField("Kicked on channel: ", message.channel)
-                .addField("Time: ", message.createdAt)
-                .addField("Reason: ", KickReason);
+    let KickReason = args.slice(0).join(" ");
+    let KickUser = (message.mentions.users.first() || message.guild.members.cache.get(args[0]));
 
-            let KickChannel = message.guild.channels.get("KickChannelID");
-            message.guild.member(KickUser).kick(KickReason).catch(err =>{
-                errfind = err;
-            });
-            if(!errfind){
-                KickChannel.send(BanEmbed);
-            }
-            else{
-                //an error usually occurs when the bot may not get appropriate permissions
-                //leads to a "Discord API: No permission error", to check that we check for errors
-                KickChannel.send("An error occured. This happens when I don't have necessary permissions!!\n\nTip: Bots have complicated permissions. Kick them manually.")
-            }
-            message.channel.messages.fetch(a).then(msg => msg.delete({ timeout: 1000 }));//this will only delete the first kick message;
-        } }
-    else { message.channel.send("You can not do it."); }
+    if (!KickUser) { message.reply("Please mention a user to ban!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) }); return; }
+
+    let date = new Date();
+
+    let KickEmbed = new Discord.MessageEmbed()
+        .setColor("#E3A452")
+        .setTitle("Kick")
+        .setDescription(`You have been kicked from **${message.guild.name}** Server!`)
+        .addField("Kicked User: ", KickUser.tag)
+        .addField("Kicked by: ", message.author.username)
+        .addField("Kicked at: ", date.toLocaleString())
+        .addField("Reason: ", KickReason)
+        .addField("Cancellation", "If you think this is a mistake, please contact the server moderation!")   
+
+    KickUser.send({embeds: [KickEmbed]}).then(() => { setTimeout(() => { message.guild.members.cache.get(KickUser.id).kick(); }, 1000) });
 }
 
 module.exports.help = {

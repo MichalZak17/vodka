@@ -31,7 +31,7 @@ Setting up virtual bot application on [**Developer Portal**](https://discord.com
 
 Congratulations you created your bot.
 
-4. Copy the bot **TOKEN** by clicking Reset Token and paste it into `Config-Bot.json` file.
+4. Copy the bot **TOKEN** by clicking Reset Token and paste it into json section in `Index.js` file.
 5. Set your bot permission on the server at the bottom of the page.
 6. Go to **OAuth2/URL Generator** bookmark.
 7. In the first table select **Bot** and copy the bot invitation down below.
