@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
-const CONFIG_CHANNELS = require("../Config/Channels.json");
+const CONFIG = require("../config.json");
 
 module.exports.run = async (bot, message, args) => {
-    if (!CONFIG_CHANNELS.action_channel) {
+    if (!CONFIG.action_channel) {
         message.channel.send("The action_channel is not set in the config file!").then(msg => { setTimeout(() => { msg.delete(); }, 5000) });
         return;
     }

@@ -15,18 +15,19 @@ const fabric_config = {
     },
 
     "Channels": {
-        "general": "984542381779091557",
+        "general": "",
         "weather": "",
         "music": "",
-        "welcome": "984542381779091557",
+        "welcome": "",
+        "action_channel": "",
 
         "logs": "",
     },
 
     "Roles": {
         "ADMINISTRATION": {
-            "admin": "984548066675806278",
-            "moderator": "984547809070026832"
+            "admin": "",
+            "moderator": ""
         },
 
         "welcome": "",
@@ -39,10 +40,10 @@ const fabric_config = {
 
     "Database": {
         "Host": "127.0.0.1",
-        "User": "root",
-        "Password": "root",
+        "User": "",
+        "Password": "",
         "Port": "3306",
-        "Database": "mydb"
+        "Database": ""
     }
 }
 
