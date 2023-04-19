@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+
+    <style>
+      h2 {
+        text-align: center;
+        font-size: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        padding: 30px 0;
+      }
+
+      body {
+        font-family: "Whitney", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background: rgb(54, 57, 62);
+      }
+
+      /* Table Styles */
+
+      .table-wrapper {
+        margin: 10px 70px 70px;
+        box-shadow: 0px 35px 50px rgb(30, 33, 36);
+      }
+
+      .fl-table {
+        border-radius: 10px; /* added border-radius */
+        font-size: 24px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+      }
+
+      .fl-table td,
+      .fl-table th {
+        text-align: center;
+        padding: 8px;
+      }
+
+      .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 24px;
+      }
+
+      .fl-table thead th {
+        color: #ffffff;
+        background: #7289da;
+      }
+
+      .fl-table thead th:nth-child(odd) {
+        color: #ffffff;
+        background: #424549;
+      }
+
+      .fl-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+    </style>
+    <script></script>
+  </head>
+  <body>
+    <h2>Discord Money Scoreboard</h2>
+
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Total</th>
+            <th>Bank</th>
+            <th>Wallet</th>
+            <th>Credit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% allGameProfiles.sort((a, b) => b.wallet + b.bank + b.credit -
+          a.wallet - a.bank - a.credit).forEach((gameProfile) => { %>
+          <tr>
+            <td><b><%= allUsers[gameProfile.user_id] %></b></td>
+            <td>
+              <b
+                ><%= gameProfile.wallet + gameProfile.bank + gameProfile.credit
+                %></b
+              >
+            </td>
+            <td><%= gameProfile.bank %></td>
+            <td><%= gameProfile.wallet %></td>
+            <td><%= gameProfile.credit %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

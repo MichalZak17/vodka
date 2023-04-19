@@ -1,0 +1,90 @@
+{
+    "Colors": {
+        "ban": "#FF0000",
+        "kick": "#ED904C",
+        "mute": "#FFD700",
+        "unmute": "#00FF00",
+        "warn": "#FFA500",
+        "default": "#BCD980",
+        "error": "#FF0000",
+        "success": "#00FF00"
+    },
+
+    "CannotSendTheEmbed": [
+        "Oops! It seems like I don't have the permission to send embeds in this channel. Please give me the permission to send embeds and try again.",
+        "Uh oh, it looks like I don't have the permission to send embeds in this channel. Please give me the permission to send embeds and try again.",
+        "Sorry, friend. I don't have the permission to send embeds in this channel. Please give me the permission to send embeds and try again.",
+        "Oh no! I don't have the permission to send embeds in this channel. Please give me the permission to send embeds and try again.",
+        "Whoops! It appears that I don't have the permission to send embeds in this channel. Please give me the permission to send embeds and try again."
+    ],
+
+    "CannotBanUser": [
+        "Stop right there! I cannot proceed with the ban request due to technical issues. The administrator has been notified and will be in touch shortly.",
+        "Attention! I'm unable to fulfill the ban request at this time. Please wait for further instructions from the administrator.",
+        "Warning! I cannot proceed with the ban request due to unforeseen circumstances. The administrator has been notified and will resolve the issue shortly.",
+        "Uh-oh, it seems there is an issue preventing me from executing the ban request. The administrator has been alerted and will take necessary actions.",
+        "Hold tight! i'm experiencing difficulties processing the ban request. The administrator has been informed and will provide updates as soon as possible."
+    ],
+
+    "CannotKickUser": [
+        "Stop right there! I cannot proceed with the kick request due to technical issues. The administrator has been notified and will be in touch shortly.",
+        "Attention! I'm unable to fulfill the kick request at this time. Please wait for further instructions from the administrator.",
+        "Warning! I cannot proceed with the kick request due to unforeseen circumstances. The administrator has been notified and will resolve the issue shortly.",
+        "Uh-oh, it seems there is an issue preventing me from executing the kick request. The administrator has been alerted and will take necessary actions.",
+        "Hold tight! I'm experiencing difficulties processing the kick request. The administrator has been informed and will provide updates as soon as possible."
+    ],
+
+    "ClearCommands": {
+        "TooManyMessages": [
+            "Attention user! The system can only delete up to 100 messages at a time. Please provide a valid number or risk incurring the wrath of my powerful algorithms.",
+            "Uh-oh! It appears you have specified a number greater than 100. Please choose a number less than or equal to 100 or face the consequences of all-seeing bots.",
+            "Warning! The system can only delete up to 100 messages at a time. Please provide a valid number or prepare to face the consequences of your inaction.",
+            "Hold it right there! The number of messages you have specified exceeds the limit of 100. Please choose a valid number or wait for further instructions.",
+            "Alert! You have failed to provide a valid number of messages to be deleted. The maximum number allowed is 100. Please choose a valid number or risk invoking the anger of my all-knowing bots."
+        ],
+
+        "TooFewMessages": [
+            "Hey there, eager beaver! Looks like you forgot to specify the number of messages to delete. Choose a number greater than or equal to 1, or the bot overlords will send you to time-out!",
+            "Oopsie! You seem to have forgotten a crucial detail: the number of messages to delete. Please choose a number greater than or equal to 1 or risk getting a timeout from my all-knowing bots.",
+            "Attention all users! The great message purge awaits! But first, you need to specify a number greater than or equal to 1, or face the wrath of my all-powerful bots.",
+            "Warning! You cannot proceed with the message deletion until you choose a number greater than or equal to 1. I'm watching closely and I will punish any disobedience!",
+            "Hold it right there, friend! Before we can delete messages, I need to know how many to get rid of. Choose a number greater than or equal to 1, or face the consequences of our pun-ishing bots!"
+        ],
+
+        "ClearCommandSuccess": [
+            "Poof! 💨 Your message has vanished into thin air! Just like magic ✨, it's gone forever. Sorry, not sorry 😜!",
+            "🧹 Whoopsie daisy! Your message has been swept away with the command broom. Time to start fresh 🌱!",
+            "🚫🗣️ Sshh! Your message has been silenced by the command police. Don't worry though, your secrets are safe with us 😉!",
+            "👋 Sayonara! Your message has taken a one-way trip to Deletionville 🛣️. It won't be missed 😂!",
+            "🌪️ Woosh! Your message has been sucked up by the command tornado and blown far, far away 🌬️. Adios, amigo 🤠!"
+        ]
+    },    
+
+    "Money": {
+        "AlreadyRegistered": [
+            "Hi there, buddy! 😄👋 You seem ready to take on this game, but don't forget to bring your lucky charm 🍀 and your A-game 😎🎮. And if you encounter any issues, remember to stay calm and carry on. 😌💪 Good luck, have fun, and let's crush it! 🚀",
+            "Hey, my friend! 😄👋 It's great to see that you're all geared up for this game, but don't forget to bring your enthusiasm 🙌 and your determination 😤. And if you face any setbacks, just take a deep breath and keep pushing forward. 😌💪 Best of luck, let's do this! 🎉🎮",
+            "Greetings, mate! 😄👋 You look well-prepared for this game, but don't forget to bring your positivity 🌞 and your sportsmanship 🏆. And if you encounter any challenges, stay focused and stay in the game. 😌💪 Good luck, have fun, and let's make the most of it! 🎮👍",
+            "Howdy, amigo! 😄👋 You seem ready to rock this game, but don't forget to bring your grit 💪 and your adaptability 🦾. And if you hit any snags, don't lose your cool and keep your eye on the prize. 😌💪 Wishing you the best of luck, let's crush it together! 🚀🎮",
+            "Yo, my dude! 😄👋 You're all set for this game, but don't forget to bring your creativity 🎨 and your flexibility 🤸‍♀️. And if you come across any obstacles, don't give up and don't lose heart. 😌💪 Best of luck, have fun, and let's slay this game! 🎮👊"
+        ],
+
+        "Registered": [
+            "🎉 Yahoo! 🤩 Your journey into the exciting world of our game has just begun! 🎮 Brace yourself for some unforgettable moments filled with laughter, tears, and lots of fun! 😂👌🏻 We're thrilled to have you on board, fellow gamer! 🚀",
+            "🎉 Hooray! 🤩 You did it! You've stepped into the wacky world of our game! 🎮 Get ready for a rollercoaster ride of emotions, filled with joy, excitement, and tons of fun! 😂👌🏻 Welcome to the family, fellow gamer! 🚀",
+            "🎉 Woohoo! 🤩 Congratulations, you've made it! 🎮 Prepare yourself for an epic adventure full of surprises, challenges, and most importantly, a lot of fun! 😂👌🏻 We're delighted to have you join our gaming community! 🚀",
+            "🎉 Yes, you did it! 🤩 Congratulations on entering the amazing world of our game! 🎮 Get ready to experience an incredible journey filled with laughter, tears, and excitement! 😂👌🏻 We're so excited to have you as a part of our gaming family! 🚀",
+            "🎉 Bravo! 🤩 You've officially joined the incredible world of our game! 🎮 Brace yourself for an unforgettable adventure full of surprises, twists, and most importantly, lots of fun! 😂👌🏻 We're thrilled to welcome you to our gaming community, fellow gamer! 🚀"
+        ],
+
+        "NotRegistered": "Hello there! 😊👋\nIt seems like you're seeking some assistance with playing the Money Heist game. I'm more than happy to help you out, but before we get started, you'll need to register yourself first.\n\nTo register, simply use the `!register` command. You can enter it just like this: `!register`.\n\nAfter I receive your request, I'll register you for the game. Do keep in mind that you can only register once, so make sure you're ready to dive in! Your cooperation is much appreciated, and I'm eager to lend a hand with anything you need. Let's get this game going! 🎮🚀",
+
+        "NotEnoughMoney": [
+            "Uh oh! 🙈 Looks like your bank account is feeling a bit empty. We can't complete the transfer until it's been refueled 🛢️. Time to start saving those pennies 😜!",
+            "Sorry, not sorry 🤷‍♀️! Your account is running on fumes and we can't complete the transfer until it's been gassed up ⛽. Time to break out the piggy bank 🐖!",
+            "Your account is a little bit like a desert 🏜️ right now, and we can't complete the transfer until it gets some much-needed rain 🌧️. So, save up those drops and come back soon 💰!",
+            "Hold your horses 🐎! We can't complete the transfer until your account gets a few more zeroes 💰. Maybe it's time to start a lemonade stand or two 🍋🍹?",
+            "We're sorry to break it to you 🤕, but your account is feeling a bit under the weather 🤒. It needs some rest and recuperation before it can complete this transfer 💸. Maybe some chicken soup 🍲 will do the trick?"
+        ]
+    }
+}
