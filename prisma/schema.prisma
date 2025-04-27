@@ -1,0 +1,27 @@
+// Defines your PostgreSQL datasource
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define your application models here
+model User {
+  id         Int        @id @default(autoincrement())
+  discordId  String     @unique
+  paid       Boolean    @default(false)
+  createdAt  DateTime   @default(now())
+  reminders  Reminder[] // relation field to reminders
+}
+
+model Reminder {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  message   String
+  remindAt  DateTime
+  sent      Boolean  @default(false)
+}
